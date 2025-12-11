@@ -7,6 +7,7 @@ loot_log = [
     "Armor:Iron Helm:50"
 ]
 
+
 def sort_loot(loot_log):
     dictionary = {}
     for line in loot_log:
@@ -32,7 +33,6 @@ def appraise_inventory(loot_dict):
         print(f"{line}: {count} Gold")
 appraise_inventory(result)
 
-        
 
 
 
