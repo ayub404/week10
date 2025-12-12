@@ -1,40 +1,33 @@
-loot_log = [
-    "Weapon:Iron Sword:150",
-    "Potion:Health Potion:10",
-    "Armor:Leather Vest:80",
-    "Weapon:Steel Dagger:120",
-    "Potion:Mana Potion:15",
-    "Armor:Iron Helm:50"
+
+pledge_list = [
+    "Alice,Animals,50",
+    "Bob,Environment,100",
+    "Charlie,Animals,25",
+    "David,Education,200",
+    "Eve,Environment,50",
+    "Frank,Education,75"
 ]
 
-
-def sort_loot(loot_log):
+def process_donations(pledge_list):
     dictionary = {}
-    for line in loot_log:
-    
-        item_type, item_name, gold = line.split(':')
-        gold = int(gold)
-    
-        if item_type not in dictionary:
-            dictionary[item_type] = []
+    for i in pledge_list:
+        donorname, cause, amount = i.split(',')
+        amount = int(amount)
+        if cause not in dictionary:
+            dictionary[cause] = []
 
-        dictionary[item_type].append((item_name, gold))
+        dictionary[cause].append((donorname, amount)) 
     return dictionary
-result = sort_loot(loot_log)
 
-
-def appraise_inventory(loot_dict):
-
-
-    for line in loot_dict:
+collected_list = process_donations(pledge_list)
+# print(collected_list)
+def print_fund_totals(charity_dict):
+    for types in charity_dict:
         count = 0
-        for item in loot_dict[line]:
-            count += item[1]
-        print(f"{line}: {count} Gold")
-appraise_inventory(result)
-
-
-
+        for i in charity_dict[types]:
+            count += i[1]
+        print(f"{types}: ${count} total")
+print_fund_totals(collected_list)
 
 
 
